@@ -1,7 +1,10 @@
 # GUI-BEATBOX-
 Эта программа позволит писать простые музыкальные композиции    
 Графическое представление:  
-![Menu](https://github.com/SssolidPrincesss/GUI-BEATBOX-/blob/main/GBeatBox/GB1.png) 
+![Menu](https://github.com/SssolidPrincesss/GUI-BEATBOX-/blob/main/GBeatBox/GB1.png)  
+![Menu](https://github.com/SssolidPrincesss/GUI-BEATBOX-/blob/main/GBeatBox/GB2.png)   
+![Menu](https://github.com/SssolidPrincesss/GUI-BEATBOX-/blob/main/GBeatBox/GB3.png)
+  
 Функционал:
 1. Кнопки Start и Stop позволяют останавливать и возобновлять проигрывание музыкальной композиции
 2. Tempo Up/Down отвечает за повышение/понижение темпа воспроизведения композиции
