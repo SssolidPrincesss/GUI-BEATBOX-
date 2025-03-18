@@ -1,5 +1,6 @@
 # GUI-BEATBOX-
-Эта программа позволит писать простые музыкальные композиции    
+Эта программа позволит писать простые музыкальные композиции  
+(За основу взята программа BeatBox из книги Head First Java!!!)  
 Графическое представление:  
 ![Menu](https://github.com/SssolidPrincesss/GUI-BEATBOX-/blob/main/GBeatBox/GB1.png)  
 ![Menu](https://github.com/SssolidPrincesss/GUI-BEATBOX-/blob/main/GBeatBox/GB2.png)   
