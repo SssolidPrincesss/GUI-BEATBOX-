@@ -1,17 +1,17 @@
 # GUI-BEATBOX-
-Эта программа позволит писать простые музыкальные композтиции 
-Графичесское представление:  
+Эта программа позволит писать простые музыкальные композиции 
+Графическое представление:  
 
 Функционал:
 1. Кнопки Start и Stop позволяют останавливать и возобновлять проигрывание музыкальной композиции
 2. Tempo Up/Down отвечает за повышение/понижение темпа воспроизведения композиции
 3. Счетчик БПМ показывает, с каким темпом воспроизводится композиция
 4. Меню(File) дает возможность сохранить/загрузить файл и обновить поле (убрать флажки и скинуть темп до стандартного — 120 БПМ)
-5. Светомузыка - фишка  
+5. Светомузыка — фишка  
   
-Теперь можно приступить к разбору кода прогшраммы  
+Теперь можно приступить к разбору кода программы  
     
-Для начала необходимо добавить библеотеки для работы с MIDI, элементами GUI, вводом/выводом и коллекциями:
+Для начала необходимо добавить библиотеки для работы с MIDI, элементами GUI, вводом/выводом и коллекциями:
 ```java
 import javax.sound.midi.*;
 import javax.swing.*;
@@ -21,8 +21,7 @@ import java.io.*;
 import java.util.*;
 ```
 
-Следующим шагом будет объявление переменных, заполнение строчного массива названиями инструментов, а так же заполнение челочисленного массива значениями ключей для извлечения определенного звука из сиквенсора(javax.sound.midi):
-
+Следующим шагом будет объявление переменных, заполнение строчного массива названиями инструментов, а также заполнение целочисленного массива значениями ключей для извлечения определенного звука из сиквенсора (javax.sound.midi):
 ```java
 public class BeatBox {
     JPanel miniPanel;
@@ -43,7 +42,7 @@ public class BeatBox {
     int[] instruments = {35,42,46,38,49,39,50,60,70,72,64,56,58,47,67,63};
 ```
 
-В сметоде main мы просто создаем объект нашего класса и вызываем метод, который отвечает за создание GUI и пр.
+В методе main мы просто создаем объект нашего класса и вызываем метод, который отвечает за создание GUI и пр.:
 ```java
     public static void main(String[] args) {
         new BeatBox().buildGui();
@@ -51,7 +50,7 @@ public class BeatBox {
 ```
 
 Теперь о самом методе buildGui():
-Эта маленькая фишка поможет программе создавать GUI в соответствии с настройками операционной системы
+Эта маленькая фишка поможет программе создавать GUI в соответствии с настройками операционной системы:
 ```java
     public void buildGui(){
         try {
@@ -61,7 +60,7 @@ public class BeatBox {
         }
 ```
 
-В этом блоке кода мы создаем окно, устанавливаем операцию прекращения работы программы, создаем менеджер компановки для панели заднего плана, устанавливаем границы для расположения элементов(окантовка) и красим панель:
+В этом блоке кода мы создаем окно, устанавливаем операцию прекращения работы программы, создаем менеджер компоновки для панели заднего плана, устанавливаем границы для расположения элементов (окантовка) и красим панель:
 ```java
         theFrame = new JFrame("Cyber BeatBox");
         theFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -73,7 +72,7 @@ public class BeatBox {
 
 
 
-Здесь мы создаем лист для хранения чекбоксов, контейнер, для хранения кнопок, а так же сами кнопки(которым мы еще добавляем возможность взаимодействия)
+Здесь мы создаем лист для хранения чекбоксов, контейнер для хранения кнопок, а также сами кнопки (которым мы еще добавляем возможность взаимодействия):
 ```java
         checkboxList = new ArrayList<>();
         Box buttonBox = new Box(BoxLayout.Y_AXIS);
@@ -95,7 +94,7 @@ public class BeatBox {
         buttonBox.add(downTempo);
 ```
 
-Тут мы создаем и настраеваем панель, на которую будет выводиться темп:
+Тут мы создаем и настраиваем панель, на которую будет выводиться темп:
 ```java
         Font bpmFont = new Font("SansSerif", Font.BOLD, 12);
         labelBPM = new JLabel("Tempo: " + bpm + " BPM");
@@ -106,7 +105,7 @@ public class BeatBox {
         buttonBox.add(labelBPM);
 ```
 
-Создаем контейнер для названий инструментов и заполняем его:
+Создаём контейнер для названий инструментов и заполняем его:
 ```java
         Box nameBox = new Box(BoxLayout.Y_AXIS);
         for (int i = 0; i < 16; i++) {
@@ -114,7 +113,7 @@ public class BeatBox {
         }
 ```
 
-В этой части кода мы создаем отдельную панель для размещения кнопок и панели со светомузыкой, настраиваем ее видимость и правила компановки, а потом добавляем в нее нужные элементы:
+В этой части кода мы создаем отдельную панель для размещения кнопок и панели со светомузыкой, настраиваем ее видимость и правила компоновки, а потом добавляем в нее нужные элементы:
 ```java
         JPanel rightPanel = new JPanel();
         panel = new MyDrawPanel();
@@ -124,7 +123,7 @@ public class BeatBox {
         rightPanel.add(buttonBox);
 ```
 
-Здесь мы настраиваем правила компановки элементов на основной панели и добавляем их:
+Здесь мы настраиваем правила компоновки элементов на основной панели и добавляем их:
 ```java
         background.add(BorderLayout.EAST, rightPanel);
         background.add(BorderLayout.WEST, nameBox);
@@ -139,7 +138,7 @@ public class BeatBox {
         miniPanel.setBackground(Color.pink);
         background.add(BorderLayout.CENTER, miniPanel);
 ```
-В этой части кода мы заполняем ранее созданную панель чекбоксами и заполняем ими же ранее созданную коллекцию, а так же запускаем метод для настройки сиквенсора:
+В этой части кода мы заполняем ранее созданную панель чекбоксами и заполняем ими же ранее созданную коллекцию, а также запускаем метод для настройки сиквенсора:
 ```java
         for (int i = 0; i < 256; i++) {
             c = new JCheckBox();
@@ -151,7 +150,7 @@ public class BeatBox {
         setUpMidi();
 ```
 
-В этойц части кода создаем элементы меню и добавляем возможность взаимодействовать с ними, а так же завершаем настройки фрейма:
+В этой части кода создаем элементы меню и добавляем возможность взаимодействовать с ними, а также завершаем настройки фрейма:
 ```java
       JMenuBar menuBar = new JMenuBar();
     	JMenu fileMenu = new JMenu("File");
@@ -190,7 +189,7 @@ public class BeatBox {
 ```
 
 
-Следующий метод позволяет воспроизводить звуки(посредством вызова другого метода) и подстраивать под них светомузыку, а так же производит необходимые настройки сиквенсора:
+Следующий метод позволяет проигрывать треки (при помощи вызова другого метода) и подстраивать под них светомузыку, а также производит необходимые настройки сиквенсора:
 ```java
     public void buildTrackAndStart(){
         int[] tracklist = null;
@@ -226,7 +225,7 @@ public class BeatBox {
 ```
 
 
-Метод, который отвечает непосредственно за воспроизведнеие звуков:
+Метод, который отвечает непосредственно за воспроизведение звуков:
 ```java
     private void makeTracks(int[] list) {
     	
@@ -240,3 +239,174 @@ public class BeatBox {
     }
 ```
 
+
+Далее идут классы, которые позволяют настроить взаимодействие с элементами меню:
+```java
+    public class NewMenuListener implements ActionListener {   
+    	public void actionPerformed(ActionEvent e) {
+    		bpm = 120;
+    		labelBPM.setText("Tempo: " + bpm + " BPM");
+	        for (JCheckBox chB : checkboxList) {
+	            chB.setSelected(false);
+	        }
+    	}
+    }
+    
+  
+    public class SaveMenuListener implements ActionListener {   
+	    public void actionPerformed(ActionEvent e) {
+	
+	        boolean[] checkboxState = new boolean[256];
+	        for (int i = 0; i < checkboxState.length; i++) {
+	            if (checkboxList.get(i).isSelected()) {
+	                checkboxState[i] = true;
+	            }
+	        }
+	        JFileChooser fileSave = new JFileChooser();
+	        fileSave.showSaveDialog(theFrame);
+	        File selectedFile = fileSave.getSelectedFile();
+	
+	        if (selectedFile != null) {
+	            saveFile(selectedFile, checkboxState);
+	        }
+	    }
+	
+	    private void saveFile(File file, boolean[] checkboxState) {
+	        try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
+	            for (boolean state : checkboxState) {
+	                writer.write(state + "\n"); 
+	            }
+	        } catch (IOException ex) {
+	            System.out.println("Ошибка при сохранении файла");
+	            ex.printStackTrace();
+	        }
+	    
+	    }
+    }
+   
+    
+    public class LoadMenuListener implements ActionListener{
+    	
+        public void actionPerformed(ActionEvent actionEvent) {
+            JFileChooser fileOpen = new JFileChooser();
+            fileOpen.showOpenDialog(theFrame);
+            loadCheckboxState(fileOpen.getSelectedFile());
+        }
+
+        private void loadCheckboxState(File file) {
+            boolean[] checkboxes = null;
+            try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+                checkboxes = new boolean[256];
+                for (int i = 0; i < 256; i++) {
+                    String line = reader.readLine();
+                    if (line != null) {
+                        checkboxes[i] = Boolean.parseBoolean(line); 
+                    } 
+                }
+
+                for (int i = 0; i < 256; i++) {
+                    JCheckBox checkbox = checkboxList.get(i);
+                    checkbox.setSelected(checkboxes[i]);
+                }
+
+                sequencer.stop();
+                buildTrackAndStart(); 
+            } catch (FileNotFoundException e) {
+                System.out.println("Файл не найден: " + file.getName()); 
+                e.printStackTrace();
+            } catch (IOException e) {
+                System.out.println("Ошибка при чтении файла: " + file.getName()); 
+                e.printStackTrace();
+            } catch (NumberFormatException e) {
+                System.out.println("Ошибка: Неверный формат данных в файле.");
+                e.printStackTrace();
+            }
+        }
+    
+    }
+```
+
+Очередной метод, связанный с сиквенсором, который создает MIDI-событие, заданное переданными параметрами:
+```java
+    public static MidiEvent makeEvent(int comd, int chan, int one, int two, int tick){
+        MidiEvent event = null;
+        try{
+            ShortMessage a = new ShortMessage();
+            a.setMessage(comd, chan, one, two);
+            event = new MidiEvent(a, tick);
+        }catch(Exception ex){
+
+        }
+        return event;
+    }
+```
+
+В этой части кода мы настраиваем взаимодействие с кнопками:
+```java
+    public class MyStartListener implements ActionListener{
+        
+        public void actionPerformed(ActionEvent actionEvent) {
+            buildTrackAndStart();
+        }
+    }
+    public class MyStopListener implements ActionListener{
+        
+        public void actionPerformed(ActionEvent actionEvent) {
+            sequencer.stop();
+        }
+    }
+    public class MyUpTempoListener implements ActionListener{
+        
+        public void actionPerformed(ActionEvent actionEvent) {
+            float tempoFactor = sequencer.getTempoFactor();
+            sequencer.setTempoFactor((float)(tempoFactor * 1.03));
+            bpm = (int) (bpm * 1.03);
+            labelBPM.setText("Tempo: " + bpm + " BPM");
+        }
+    }
+    public class MyDownTempoListener implements ActionListener{
+        
+        public void actionPerformed(ActionEvent actionEvent) {
+            float tempoFactor = sequencer.getTempoFactor();
+            sequencer.setTempoFactor((float)(tempoFactor * 0.97));
+            bpm = (int) (bpm * 0.97);
+            labelBPM.setText("Tempo: " + bpm + " BPM");
+        }
+    }
+```
+
+И, наконец, класс, который отвечает за прорисовку, обновление и другие действия, связанные со светомузыкой:
+```java
+    class MyDrawPanel extends JPanel implements ControllerEventListener{
+		boolean msg = false;
+		
+		public void controlChange(ShortMessage event) {
+			msg = true;
+			repaint();
+		}
+		
+		public void paintComponent(Graphics g) {
+			if(msg) {
+				Graphics2D g2 = (Graphics2D) g;
+				
+				int r = (int) (Math.random() * 250);
+				int gr = (int) (Math.random() * 250);
+				int b = (int) (Math.random() * 250);
+				
+				g.setColor(Color.black);
+				g.fillRect (0, 0, this.getWidth(), this.getHeight());
+				
+				g.setColor(new Color(r, gr, b));
+				
+				int height = (int) ((Math.random() * 120) + 10);
+				int width = (int) ((Math.random() * 120) + 10);
+				int x = (int) ((Math.random() * 50) + 10);
+				int y = (int) ((Math.random() * 100) + 10);
+				
+				g.fillRect(x, y, height, width);
+				msg = false;
+			}
+		}	
+	}  
+}
+```
