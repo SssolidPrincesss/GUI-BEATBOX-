@@ -329,13 +329,13 @@ public class BeatBox {
     }
 ```
 Важно!  
-Файлы сохряняются с булевыми значениями для удобства загрузки. Сам файл выглядит так:  
-![Menu](https://github.com/SssolidPrincesss/GUI-BEATBOX-/blob/main/GBeatBox/GB4.png)   
-При сохранении(и загрузке) файла откроется дополнительный фрейм, в котором можно либо выбрать место для файла, либо открыть заранее сохраненный проект:
-![Menu](https://github.com/SssolidPrincesss/GUI-BEATBOX-/blob/main/GBeatBox/GB6.png)
-Внизу этого фрейма будет кнопочка сохранить или загрузить в зависимости, от нашей цели:
-![Menu](https://github.com/SssolidPrincesss/GUI-BEATBOX-/blob/main/GBeatBox/GB7.png)
-![Menu](https://github.com/SssolidPrincesss/GUI-BEATBOX-/blob/main/GBeatBox/GB8.png)  
+Файлы сохряняются с булевыми значениями для удобства загрузки. Сам файл выглядит так:    
+![Menu](https://github.com/SssolidPrincesss/GUI-BEATBOX-/blob/main/GBeatBox/GB4.png)     
+При сохранении(и загрузке) файла откроется дополнительный фрейм, в котором можно либо выбрать место для файла, либо открыть заранее сохраненный проект:  
+![Menu](https://github.com/SssolidPrincesss/GUI-BEATBOX-/blob/main/GBeatBox/GB6.png)  
+Внизу этого фрейма будет кнопочка сохранить или загрузить в зависимости, от нашей цели:  
+![Menu](https://github.com/SssolidPrincesss/GUI-BEATBOX-/blob/main/GBeatBox/GB7.png)  
+![Menu](https://github.com/SssolidPrincesss/GUI-BEATBOX-/blob/main/GBeatBox/GB8.png)    
   
 Очередной метод, связанный с сиквенсором, который создает MIDI-событие, заданное переданными параметрами:
 ```java
